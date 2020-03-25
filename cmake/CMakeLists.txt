@@ -6,6 +6,9 @@ include(GNUInstallDirs)
 
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${CMAKE_PROJECT_NAME})
 
+file(GLOB CUSTOM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*)
+file(COPY ${CUSTOM_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/${CMAKE_PROJECT_NAME})
+
 FILE(GLOB_RECURSE files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/../single_header ${CMAKE_CURRENT_SOURCE_DIR}/../single_header/fakeit.hpp)
 foreach(file ${files})
 	get_filename_component(dir ${file} DIRECTORY)
